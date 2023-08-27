@@ -12,6 +12,7 @@ namespace BankApplication
         {
             Console.WriteLine("Type Your FirstName");
             string firsName = Console.ReadLine();
+            
 
             Console.WriteLine("Input Your Last Name");
             string lastname = Console.ReadLine();
@@ -29,7 +30,9 @@ namespace BankApplication
             Console.WriteLine("What Type of account Do You Want?\n Press S for Savings and C for Current Account");
             string acctype = Console.ReadLine();
 
-            string accounttype = " ";
+            Console.Clear();
+
+            string accounttype = "";
 
 
             if(acctype == "S")
@@ -52,7 +55,9 @@ namespace BankApplication
 
             ListOfCustomers.AddCustomer(accountNumber, customer);
 
-            Console.WriteLine("Account has been Successfully Created.\n Your Account Number is " +  accountNumber); 
+            Console.WriteLine("Account has been Successfully Created.\n Your Account Number is " +  accountNumber);
+
+            Functions.LoginCustomer();
 
         }
 

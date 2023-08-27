@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankApplication
 {
-        
+
 
     internal class ListOfCustomers
     {

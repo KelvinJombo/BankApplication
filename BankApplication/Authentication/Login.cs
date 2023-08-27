@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+ 
 
 namespace BankApplication
 {
@@ -10,7 +11,7 @@ namespace BankApplication
     {
         public static void LoginUser()
         {
-            Console.WriteLine("enter Your Account Number");
+            Console.WriteLine("Enter Your Account Number to Login");
             string accountNo = Console.ReadLine();
 
 
@@ -44,6 +45,8 @@ namespace BankApplication
                 if (found)
                 {
                     Logged.LoggedAccount = accountNo;
+                    Console.WriteLine("Login Successful!!!");
+                    Initiation.Options();
 
                 }
                 else

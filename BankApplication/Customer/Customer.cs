@@ -40,15 +40,17 @@ namespace BankApplication
             return firstName;
         }
 
-        public void Deposit(double amount)
-        {
-            balance += amount;
-        }
-
         public string GetLastName()
         {
             return lastName;
         }
+
+        public void SetBalance(double amount)
+        {
+            balance = amount;
+        }
+
+        
 
         public string GetPhoneNumber()
         {
@@ -68,15 +70,17 @@ namespace BankApplication
         }
 
 
-        public void GetBalance()
+        public double GetBalance()
         {
-            Console.WriteLine("Current Balance is " + balance);
+            return balance;
         }
 
         public string GetPassword()
         {
             return password;
         }
+
+         
 
 
     }
