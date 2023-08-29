@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankApplication
 {
-    internal class Login
+    internal class Login: Logged
     {
         public static void LoginUser()
         {
@@ -26,6 +26,7 @@ namespace BankApplication
             }
             else
             {
+                Customer foundCustomer = null;
                 var customerList = ListOfCustomers.customerList;
                 bool found = false;
 
@@ -44,7 +45,8 @@ namespace BankApplication
                 }
                 if (found)
                 {
-                    Logged.LoggedAccount = accountNo;
+                    LoggedAccount = accountNo;
+                    loggedCustomer = foundCustomer;
                     Console.WriteLine("Login Successful!!!");
                     Initiation.Options();
 

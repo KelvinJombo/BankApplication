@@ -9,5 +9,6 @@ namespace BankApplication
     internal class Logged
     {
         public static string LoggedAccount { get; set; }
+        public static Customer loggedCustomer { get; set; } 
     }
 }

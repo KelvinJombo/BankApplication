@@ -6,17 +6,23 @@ using System.Threading.Tasks;
 
 namespace BankApplication
 {
-    internal class Transaction
+    internal class Transaction : Logged 
     {
-        static string accountNumber = Logged.LoggedAccount;
+         
         static Dictionary<string, Customer> customerList = ListOfCustomers.customerList;
 
+
+        public string GenerateTransactionID()
+        {
+            Guid newGuid = Guid.NewGuid();
+            return newGuid.ToString();
+        }
         public static void Deposit(double amount)
         {
 
             foreach (var item in customerList)
             {
-                if (item.Key == accountNumber)
+                if (item.Key == LoggedAccount)
                 {
                     Customer customer = item.Value;
                     double balance = customer.GetBalance();
@@ -32,7 +38,7 @@ namespace BankApplication
         {
             foreach (var item in customerList)
             {
-                if (item.Key == accountNumber)
+                if (item.Key == LoggedAccount)
                 {
                     Customer customer = item.Value;
                     double balance = customer.GetBalance();
@@ -49,7 +55,7 @@ namespace BankApplication
 
         public void Transfer()
         {
-
+            
         }
 
 
@@ -58,7 +64,7 @@ namespace BankApplication
             double bal = 0;
             foreach (var item in customerList)
             {
-                if (item.Key == accountNumber)
+                if (item.Key == LoggedAccount)
                 {
                     Customer customer = item.Value;
                     bal = customer.GetBalance();
@@ -78,7 +84,7 @@ namespace BankApplication
 
             foreach (var item in customerList)
             {
-                if (item.Key == accountNumber)
+                if (item.Key == LoggedAccount)
                 {
                     Customer customer = item.Value;
                     accountType = customer.GetAccountType();

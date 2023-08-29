@@ -18,10 +18,12 @@ namespace BankApplication
         private string accountType { get; set; }   
 
         private string password { get; set; }
+
+        private string BVN { get; set; }
         
 
 
-        public Customer(string fname, string lname, string phone, string email, string accountType, string password)
+        public Customer(string fname, string lname, string phone, string email, string accountType, string password, string bvn)
         {
             this .firstName = fname;
             this .lastName = lname;
@@ -30,6 +32,7 @@ namespace BankApplication
             this.balance = 0;
             this.accountType = accountType;
             this.password = password;
+            this.BVN = bvn;
             
 
         }
@@ -80,6 +83,11 @@ namespace BankApplication
             return password;
         }
 
+
+        public string GetBVN()
+        {
+            return BVN;
+        }
          
 
 

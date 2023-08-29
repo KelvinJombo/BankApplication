@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankApplication.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace BankApplication
 {
-    internal class CreateNewAccount
+    internal class CreateNewAccount : ListOfCustomers
     {
         public static void CreateCustomerAccount()
         {
+            Console.WriteLine("Input Your BVN");
+            string bvn = Console.ReadLine();
+
             Console.WriteLine("Type Your FirstName");
             string firsName = Console.ReadLine();
             
@@ -45,19 +49,39 @@ namespace BankApplication
             }
 
 
-            Customer customer = new Customer(firsName, lastname, phoneNumber, email, accounttype, password);
+
+            bool found = false;
+
+            foreach (var registeredUsers in customerList)
+            {
+                Customer user = registeredUsers.Value;
+                if (user.GetBVN() == bvn)
+                {
+                    if (user.GetAccountType() == accounttype)
+                    {
+                        Logger.Log($"You already Have a {accounttype} account");
+                        found = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!found)
+            {
 
 
-            string accountNumber = AccountNumberGenerator.GenerateNewAccountNumber();
+                Customer customer = new Customer(firsName, lastname, phoneNumber, email, accounttype, password, bvn);
 
+                string accountNumber = AccountNumberGenerator.GenerateNewAccountNumber();
 
+                AddCustomer(accountNumber, customer);
 
+                Console.WriteLine("Account has been Successfully Created.\n Your Account Number is " + accountNumber);
 
-            ListOfCustomers.AddCustomer(accountNumber, customer);
+            }
+            
+            Login.LoginUser();
 
-            Console.WriteLine("Account has been Successfully Created.\n Your Account Number is " +  accountNumber);
-
-            Functions.LoginCustomer();
 
         }
 
